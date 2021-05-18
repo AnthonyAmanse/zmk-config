@@ -1,0 +1,8 @@
+# Copyright (c) 2021 Anthony Amanse
+# SPDX-License-Identifier: MIT
+
+config SHIELD_UNTITLED_LEFT
+	def_bool $(shields_list_contains,untitled_left)
+
+config SHIELD_UNTITLED_RIGHT
+	def_bool $(shields_list_contains,untitled_right)
