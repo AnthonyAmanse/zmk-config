@@ -33,29 +33,29 @@ jobs:
         run: west update
       - name: West Zephyr export
         run: west zephyr-export
-      - name: West Build (Sofle Left)
-        run: west build -s zmk/app -b bluemicro840_v1 -- -DSHIELD=sofle_left -DZMK_CONFIG="${GITHUB_WORKSPACE}/config"
-      - name: Sofle DTS File
+      - name: West Build (Untitled Left)
+        run: west build -s zmk/app -b bluemicro840_v1 -- -DSHIELD=untitled_left -DZMK_CONFIG="${GITHUB_WORKSPACE}/config"
+      - name: Untitled DTS File
         if: ${{ always() }}
         run: cat -n build/zephyr/bluemicro840_v1.dts.pre.tmp
-      - name: Sofle Left Kconfig file
+      - name: Untitled Left Kconfig file
         run: cat build/zephyr/.config | grep -v "^#" | grep -v "^$"
       - name: Rename zmk.uf2
-        run: cp build/zephyr/zmk.uf2 sofle_left_bluemicro840_v1.uf2
-      - name: Archive (Sofle Left)
+        run: cp build/zephyr/zmk.uf2 untitled_left_bluemicro840_v1.uf2
+      - name: Archive (Untitled Left)
         uses: actions/upload-artifact@v2
         with:
           name: firmware
-          path: sofle_left_bluemicro840_v1.uf2
-      - name: West Build (Sofle Right)
-        run: west build --pristine -s zmk/app -b bluemicro840_v1 -- -DSHIELD=sofle_right -DZMK_CONFIG="${GITHUB_WORKSPACE}/config"
+          path: untitled_left_bluemicro840_v1.uf2
+      - name: West Build (Untitled Right)
+        run: west build --pristine -s zmk/app -b bluemicro840_v1 -- -DSHIELD=untitled_right -DZMK_CONFIG="${GITHUB_WORKSPACE}/config"
 
-      - name: Sofle Right Kconfig file
+      - name: Untitled Right Kconfig file
         run: cat build/zephyr/.config | grep -v "^#" | grep -v "^$"
       - name: Rename zmk.uf2
-        run: cp build/zephyr/zmk.uf2 sofle_right_bluemicro840_v1.uf2
-      - name: Archive (Sofle Right)
+        run: cp build/zephyr/zmk.uf2 untitled_right_bluemicro840_v1.uf2
+      - name: Archive (Untitled Right)
         uses: actions/upload-artifact@v2
         with:
           name: firmware
-          path: sofle_right_bluemicro840_v1.uf2
+          path: untitled_right_bluemicro840_v1.uf2
