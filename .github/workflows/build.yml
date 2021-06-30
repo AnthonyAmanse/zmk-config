@@ -33,29 +33,29 @@ jobs:
         run: west update
       - name: West Zephyr export
         run: west zephyr-export
-      - name: West Build (Untitled Left)
-        run: west build -s zmk/app -b bluemicro840_v1 -- -DSHIELD=untitled_left -DZMK_CONFIG="${GITHUB_WORKSPACE}/config"
-      - name: Untitled DTS File
+      - name: West Build (Amalgamate Left)
+        run: west build -s zmk/app -b amalgamate_left -- -DZMK_CONFIG="${GITHUB_WORKSPACE}/config"
+      - name: Amalgamate DTS File
         if: ${{ always() }}
-        run: cat -n build/zephyr/bluemicro840_v1.dts.pre.tmp
-      - name: Untitled Left Kconfig file
+        run: cat -n build/zephyr/amalgamate_left.dts.pre.tmp
+      - name: Amalgamate Left Kconfig file
         run: cat build/zephyr/.config | grep -v "^#" | grep -v "^$"
       - name: Rename zmk.uf2
-        run: cp build/zephyr/zmk.uf2 untitled_left_bluemicro840_v1.uf2
-      - name: Archive (Untitled Left)
+        run: cp build/zephyr/zmk.uf2 amalgamate_left.uf2
+      - name: Archive (Amalgamate Left)
         uses: actions/upload-artifact@v2
         with:
           name: firmware
-          path: untitled_left_bluemicro840_v1.uf2
-      - name: West Build (Untitled Right)
-        run: west build --pristine -s zmk/app -b bluemicro840_v1 -- -DSHIELD=untitled_right -DZMK_CONFIG="${GITHUB_WORKSPACE}/config"
+          path: amalgamate_left.uf2
+      - name: West Build (Amalgamate Right)
+        run: west build --pristine -s zmk/app -b amalgamate_right -- -DZMK_CONFIG="${GITHUB_WORKSPACE}/config"
 
-      - name: Untitled Right Kconfig file
+      - name: Amalgamate Right Kconfig file
         run: cat build/zephyr/.config | grep -v "^#" | grep -v "^$"
       - name: Rename zmk.uf2
-        run: cp build/zephyr/zmk.uf2 untitled_right_bluemicro840_v1.uf2
-      - name: Archive (Untitled Right)
+        run: cp build/zephyr/zmk.uf2 amalgamate_right.uf2
+      - name: Archive (Amalgamate Right)
         uses: actions/upload-artifact@v2
         with:
           name: firmware
-          path: untitled_right_bluemicro840_v1.uf2
+          path: amalgamate_right.uf2

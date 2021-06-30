@@ -1,0 +1,7 @@
+/*
+ * Copyright (c) 2021 Anthony Amanse
+ *
+ * SPDX-License-Identifier: MIT
+ */
+
+#include "amalgamate.keymap"
