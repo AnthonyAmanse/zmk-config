@@ -1,0 +1,81 @@
+/*
+ * Copyright (c) 2021 Anthony Amanse
+ *
+ * SPDX-License-Identifier: MIT
+ */
+
+#include <behaviors.dtsi>
+#include <dt-bindings/zmk/keys.h>
+#include <dt-bindings/zmk/bt.h>
+
+#define GAME 1
+#define QWERTY 2
+#define FN 3
+#define ADJ 4
+
+/ {
+        keymap {
+                compatible = "zmk,keymap";
+
+                default_layer {
+                        bindings = <
+&kp ESC   &kp N1 &kp N2   &kp N3   &kp N4       &kp N5                           &kp N6   &kp N7   &kp N8    &kp N9   &kp N0   &tog GAME
+&kp TAB   &kp Q  &kp W    &kp F    &kp P        &kp B                            &kp J    &kp L    &kp U     &kp Y    &kp SEMI &kp BSLH
+&kp LGUI  &kp A  &kp R    &kp S    &kp T        &kp G                            &kp M    &kp N    &kp E     &kp I    &kp O    &kp SQT
+&kp LCTRL &kp Z  &kp X    &kp C    &kp D        &kp V     &kp C_MUTE    &tog ADJ &kp K    &kp H    &kp COMMA &kp DOT  &kp FSLH &kp DEL
+                          &kp LALT &lt FN GRAVE &kp LSHFT &kp SPACE     &kp RET  &kp BSPC &mo FN   &kp RALT
+                        >;
+                        sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN &inc_dec_kp PG_UP PG_DN>;
+                        label = "Colemak";
+                };
+
+
+                gaming_layer {
+                        bindings = <
+&trans    &trans &trans   &trans   &trans    &trans                        &trans  &trans    &trans    &trans   &trans   &tog GAME
+&trans    &kp Q  &kp W    &kp E    &kp R     &kp T                         &kp Y   &kp U     &kp I     &kp O    &kp P    &trans
+&kp CAPS  &kp A  &kp S    &kp D    &kp F     &kp G                         &kp H   &kp J     &kp K     &kp L    &kp SEMI &kp SQT
+&kp LSHFT &kp Z  &kp X    &kp C    &kp V     &kp B     &trans    &trans    &kp N   &kp M     &kp COMMA &kp DOT  &kp FSLH &trans
+                          &mo FN   &kp LALT  &kp SPACE &kp LCTRL &trans    &trans  &trans    &trans
+                        >;
+                        sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN &inc_dec_kp PG_UP PG_DN>;
+                        label = "Gaming";
+                };
+                
+
+                qwerty_layer {
+                        bindings = <
+&trans &trans &trans   &trans   &trans    &trans                  &trans  &trans    &trans    &trans   &trans   &trans
+&trans &kp Q  &kp W    &kp E    &kp R     &kp T                   &kp Y   &kp U     &kp I     &kp O    &kp P    &trans
+&trans &kp A  &kp S    &kp D    &kp F     &kp G                   &kp H   &kp J     &kp K     &kp L    &kp SEMI &kp SQT
+&trans &kp Z  &kp X    &kp C    &kp V     &kp B   &trans   &trans &kp N   &kp M     &kp COMMA &kp DOT  &kp FSLH &trans
+                       &trans   &trans    &trans  &trans   &trans &trans  &trans    &trans
+                        >;
+                        sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN &inc_dec_kp PG_UP PG_DN>;
+                };
+
+                fn_layer {
+                        bindings = <
+&trans    &kp F1    &kp F2       &kp F3      &kp F4    &kp F5                     &kp F6       &kp F7           &kp F8        &kp F9    &kp F10   &kp F11
+&trans    &trans    &kp C_VOL_UP &kp COLON   &kp LBRC  &kp RBRC                   &kp KP_PLUS  &kp EQUAL        &kp UP        &trans    &trans    &kp F12
+&trans    &trans    &kp C_VOL_DN &kp SEMI    &kp LPAR  &kp RPAR                   &kp KP_MINUS &kp LEFT         &kp DOWN      &kp RIGHT &trans    &trans
+&trans    &trans    &trans       &trans      &kp LBKT  &kp RBKT  &trans   &trans  &kp UNDER    &kp KP_ASTERISK  &kp KP_SLASH  &kp COLON &trans    &trans
+                                 &trans      &trans    &trans    &trans   &trans  &trans       &trans           &trans
+                        >;
+                        sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN &inc_dec_kp PG_UP PG_DN>;
+                        label = "Function";
+                };
+
+                adj_layer {
+                        bindings = <
+&bt BT_CLR &bt BT_SEL 0 &bt BT_SEL 1 &bt BT_SEL 2 &bt BT_SEL 3 &bt BT_SEL 4                    &trans    &trans    &trans   &trans    &trans  &trans
+&trans     &kp INS      &kp PSCRN    &kp K_CMENU  &trans       &trans                          &kp PG_UP &trans    &kp UP   &trans    &kp N0  &trans
+&trans     &kp LALT     &kp LCTRL    &kp LSHFT    &trans       &kp CLCK                        &kp PG_DN &kp LEFT  &kp DOWN &kp RIGHT &kp DEL &kp BSPC
+&trans     &kp K_UNDO   &kp K_CUT    &kp K_COPY   &kp K_PASTE  &trans        &trans    &trans  &trans    &trans    &trans   &trans    &trans  &trans
+                                     &trans       &trans       &trans        &trans    &trans  &trans    &trans    &trans
+                        >;
+                        sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN &inc_dec_kp PG_UP PG_DN>;
+                        label = "Adjust";
+                };
+        };
+};

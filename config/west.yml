@@ -2,10 +2,12 @@ manifest:
   remotes:
     - name: zmkfirmware
       url-base: https://github.com/zmkfirmware
+    - name: anthonyamanse
+      url-base: https://github.com/AnthonyAmanse
   projects:
     - name: zmk
-      remote: zmkfirmware
-      revision: main
+      remote: anthonyamanse
+      revision: AnthonyAmanse-zmk-v2.4.0+inkdriver
       import: app/west.yml
   self:
     path: config
